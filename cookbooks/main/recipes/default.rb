@@ -1,6 +1,6 @@
-package "git" # pacman -S git
 package "zsh"
 package "nginx"
+package "vim"
 
 user node[:user][:name] do
   password node[:user][:password]
