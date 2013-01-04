@@ -9,3 +9,25 @@ user node[:user][:name] do
   supports manage_home: true
   shell "/bin/zsh"
 end
+
+# NGINX
+directory "#{node['nginx']['dir']}/sites-enabled" do
+  owner "root"
+  group "root"
+  mode 00755
+  action :create
+end
+
+template "nginx.conf" do
+  path "#{node['nginx']['dir']}/nginx.conf"
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+  notifies :reload, 'service[nginx]', :immediately
+end
+
+service "nginx" do
+  supports :status => true, :restart => true, :reload => true
+  action :start
+end

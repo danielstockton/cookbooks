@@ -3,8 +3,13 @@
     "name": "deployer",
     "password": "<password>"
   },
+  "nginx": {
+    "user": "http",
+    "worker_processes": 1,
+    "worker_connections": 1024,
+    "dir": "/etc/nginx"
+  },
   "run_list": [
-    "recipe[main]",
-    "recipe[vim]"
+    "recipe[main]"
   ]
 }
