@@ -1,6 +1,8 @@
 package "zsh"
 package "nginx"
+package "postgresql"
 package "vim"
+package "tmux"
 
 user node[:user][:name] do
   password node[:user][:password]
@@ -10,7 +12,7 @@ user node[:user][:name] do
   shell "/bin/zsh"
 end
 
-# NGINX
+# nginx
 directory "#{node['nginx']['dir']}/sites-enabled" do
   owner "root"
   group "root"
