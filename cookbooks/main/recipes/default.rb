@@ -28,6 +28,7 @@ template "nginx.conf" do
 end
 
 service "nginx" do
+  provider Chef::Provider::Service::Systemd
   supports :status => true, :restart => true, :reload => true
   action :start
 end
